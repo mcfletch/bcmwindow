@@ -22,7 +22,7 @@ if __name__ == "__main__":
         keywords='raspberry pi, window, opengl, gles, egl',
         packages=find_packages(),
         include_package_data=True,
-        license='MIT',
+        license='BSD',
         package_data = {
             'bcmwindow': [
             ],
