@@ -62,7 +62,7 @@ def main(displayfunc, api):
     eglBindAPI(api)
     
     # now need to get a raw X window handle...
-    window = bcm.create_window()
+    window = bcm.create_window(50,50,300,300)
     surface = eglCreateWindowSurface(display, configs[0], ctypes.addressof(window), None )
     
     ctx = eglCreateContext(display, configs[0], EGL_NO_CONTEXT, None)

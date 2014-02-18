@@ -47,13 +47,13 @@ def graphics_get_display_size( display_number=0 ):
     bcm.graphics_get_display_size( display_number, ctypes.addressof(width), ctypes.addressof(height) )
     return width.value,height.value
 
-def create_window(width=None, height=None):
+def create_window(x=0,y=0,width=None, height=None):
     if width is None or height is None:
         W,H = graphics_get_display_size()
     else:
         W,H = width,height
-    dst = Rect(0,0,W,H)
-    src = Rect(0,0,W<<16,H<<16) # why?
+    dst = Rect(x,y,W,H)
+    src = Rect(x<<16,y<<16,W<<16,H<<16) # why?
     display = open_display(0)
     update = update_start(0)
     element = bcm.vc_dispmanx_element_add(
