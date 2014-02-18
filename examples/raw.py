@@ -112,7 +112,7 @@ if __name__ == "__main__":
         name = 'gles1'
     if name == 'gles':
         name = 'gles1'
-    function = globals().get( 'displayfunc_%s'%(name,), displayfunc_gl )
+    function = globals().get( 'displayfunc_%s'%(name,), displayfunc_gles1 )
     print 'Using function', function
     try:
         main(function,function.api)
