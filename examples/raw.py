@@ -85,15 +85,6 @@ def main(displayfunc, api):
     
     print 'Available EGL extensions', EGLQuerier.getExtensions()
 
-def displayfunc_gl( display, surface, ctx ):
-    from OpenGL import GL
-    print display,surface,ctx
-    eglMakeCurrent( display, surface, surface, ctx )
-    GL.glClearColor( 1,0,0, 0 )
-    GL.glClear( GL.GL_COLOR_BUFFER_BIT|GL.GL_DEPTH_BUFFER_BIT )
-    eglSwapBuffers( display, surface )
-displayfunc_gl.api = EGL_OPENGL_API
-
 def displayfunc_gles1(display, surface, ctx):
     from OpenGL import GLES1 as GL
     eglMakeCurrent( display, surface, surface, ctx )
@@ -114,20 +105,11 @@ def displayfunc_gles2(display, surface, ctx):
     eglSwapBuffers( display, surface )
 displayfunc_gles2.api = EGL_OPENGL_ES_API
 
-def displayfunc_gles3(display, surface, ctx):
-    from OpenGL import GLES3 as GL
-    eglMakeCurrent( display, surface, surface, ctx )
-    GL.glClearColor( 1,0,0, 0 )
-    GL.glClear( GL.GL_COLOR_BUFFER_BIT|GL.GL_DEPTH_BUFFER_BIT )
-    eglSwapBuffers( display, surface )
-displayfunc_gles3.api = EGL_OPENGL_ES_API
-
-    
 if __name__ == "__main__":
     if sys.argv[1:]:
         name = sys.argv[1]
     else:
-        name = 'gl'
+        name = 'gles1'
     if name == 'gles':
         name = 'gles1'
     function = globals().get( 'displayfunc_%s'%(name,), displayfunc_gl )
