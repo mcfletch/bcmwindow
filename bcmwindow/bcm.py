@@ -53,7 +53,7 @@ def create_window(x=0,y=0,width=None, height=None):
     else:
         W,H = width,height
     dst = Rect(x,y,W,H)
-    src = Rect(x<<16,y<<16,W<<16,H<<16) # why?
+    src = Rect(x,y,W<<16,H<<16) # why?
     display = open_display(0)
     update = update_start(0)
     element = bcm.vc_dispmanx_element_add(
