@@ -30,7 +30,7 @@ bcm.vc_dispmanx_element_add.argtypes = [
     ctypes.POINTER(Rect),# destination
     ctypes.c_void_p, # resource
     ctypes.POINTER(Rect),# source
-    ctypes.c_uint32, # protection
+    ctypes.c_void_p, # protection
     ctypes.c_void_p, # alpha
     ctypes.c_void_p, # clamp
     ctypes.c_void_p, # transform
@@ -63,7 +63,7 @@ def create_window(x=0,y=0,width=None, height=None):
         dst, 
         ctypes.c_void_p(0),
         src,
-        0,
+        ctypes.c_void_p(0),
         ctypes.c_void_p(0),
         ctypes.c_void_p(0),
         ctypes.c_void_p(0),
